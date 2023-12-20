@@ -29,11 +29,13 @@ if __name__ == '__main__':
     # 定义编码函数
     enc = tiktoken.get_encoding("gpt2")
     def process(example):
-        ids = enc.encode_ordinary(example['lyric'])
+        # 将列表中的字符串使用空格连接成单个字符串
+        lyrics_text = ' '.join(example['lyric'])
+        ids = enc.encode_ordinary(lyrics_text)
         ids.append(enc.eot_token)
         out = {'ids': ids, 'len': len(ids)}
-        
         return out
+
 
     # 对数据进行编码
     tokenized = split_dataset.map(

@@ -38,6 +38,7 @@ Thumbs.db
 
 # Specific large file or directory
 
-Dataset/lyric_data_for_CL_no_id.jsonl
+Dataset/
+lyric_data_for_CL_no_id.jsonl
 
 # Add here other files/directories you want to ignore.
