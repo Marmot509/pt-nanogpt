@@ -114,7 +114,7 @@ def get_batch(split):
 
 # init these up here, can override if init_from='resume' (i.e. from a checkpoint)
 iter_num = 0
-best_val_loss = 2
+best_val_loss = 1e9
 
 # attempt to derive vocab_size from the dataset
 meta_path = os.path.join(data_dir, 'meta.pkl')
@@ -249,7 +249,7 @@ while True:
                 "lr": lr,
                 "mfu": running_mfu*100, # convert to percentage
             })
-        if losses['val'] < best_val_loss or (iter_num % checkpoint_iters == 0):
+        if (iter_num > 4000 and losses['val'] < best_val_loss) or iter_num % checkpoint_iters == 0:
             best_val_loss = losses['val']
             if iter_num > 0:
                 checkpoint = {
