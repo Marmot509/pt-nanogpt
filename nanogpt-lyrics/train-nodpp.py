@@ -45,8 +45,8 @@ wandb_project = 'owt'
 wandb_run_name='gpt2-124M-lyrics'
 # data
 dataset = 'lyrics'
-gradient_accumulation_steps = 4     # 
-batch_size = 16                     # 每个batch
+gradient_accumulation_steps = 1     # 
+batch_size = 48                     # 每个batch
 block_size = 2048                   # 平均每条歌词数据大约500字左右。设置2048以保证每条数据在一个batch中
 # model
 n_layer = 12                # 12层
@@ -57,8 +57,8 @@ bias = False                # 不使用偏置
 # adamw optimizer
 learning_rate = 6e-4        # max learning rate
 min_lr = 6e-5               # minimum learning rate, should be ~= learning_rate/10 per Chinchilla
-max_iters = 15000            # 根据数据集大小确定。此时Epoch约为5
-lr_decay_iters = 15000       # should be ~= max_iters per Chinchilla
+max_iters = 10000            # 根据数据集大小确定。此时Epoch约为5
+lr_decay_iters = 10000       # should be ~= max_iters per Chinchilla
 
 decay_lr = True             # whether to decay the learning rate
 warmup_iters = 200          # how many steps to warm up for
@@ -72,7 +72,7 @@ eval_interval = 1000
 eval_iters = 200
 log_interval = 10
 # system
-device = 'cpu' # examples: 'cpu', 'cuda', 'cuda:0', 'cuda:1' etc., or try 'mps' on macbooks
+device = 'cuda' # examples: 'cpu', 'cuda', 'cuda:0', 'cuda:1' etc., or try 'mps' on macbooks
 dtype = 'bfloat16' if torch.cuda.is_available() and torch.cuda.is_bf16_supported() else 'float32' # 'float32', 'bfloat16', or 'float16', the latter will auto implement a GradScaler
 compile = True # use PyTorch 2.0 to compile the model to be faster
 # -----------------------------------------------------------------------------
