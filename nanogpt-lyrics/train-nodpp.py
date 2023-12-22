@@ -37,7 +37,8 @@ eval_interval = 10
 log_interval = 10
 eval_iters = 10
 eval_only = False # if True, script exits right after the first eval
-always_save_checkpoint = True # if True, always save a checkpoint after each eval
+checkpoint_iters = 1000 # save a checkpoint every this many iterations
+#always_save_checkpoint = True # if True, always save a checkpoint after each eval
 init_from = 'scratch' # 'scratch' or 'resume' or 'gpt2*'
 # wandb logging
 wandb_log = True
@@ -248,7 +249,7 @@ while True:
                 "lr": lr,
                 "mfu": running_mfu*100, # convert to percentage
             })
-        if losses['val'] < best_val_loss or always_save_checkpoint:
+        if losses['val'] < best_val_loss or iter_num % checkpoint_iters == 0:
             best_val_loss = losses['val']
             if iter_num > 0:
                 checkpoint = {
