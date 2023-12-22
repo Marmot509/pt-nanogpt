@@ -249,7 +249,7 @@ while True:
                 "lr": lr,
                 "mfu": running_mfu*100, # convert to percentage
             })
-        if losses['val'] < best_val_loss or iter_num % checkpoint_iters == 0:
+        if losses['val'] < best_val_loss or (iter_num % checkpoint_iters == 0):
             best_val_loss = losses['val']
             if iter_num > 0:
                 checkpoint = {
