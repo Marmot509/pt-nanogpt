@@ -45,8 +45,8 @@ wandb_project = 'owt'
 wandb_run_name='gpt2-124M-lyrics'
 # data
 dataset = 'lyrics'
-gradient_accumulation_steps = 1     # 不使用梯度累积
-batch_size = 32                    # 每个batch128条歌词
+gradient_accumulation_steps = 4     # 
+batch_size = 16                     # 每个batch
 block_size = 2048                   # 平均每条歌词数据大约500字左右。设置2048以保证每条数据在一个batch中
 # model
 n_layer = 12                # 12层
