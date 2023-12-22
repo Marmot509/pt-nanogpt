@@ -46,7 +46,7 @@ wandb_run_name='gpt2-124M-lyrics'
 # data
 dataset = 'lyrics'
 gradient_accumulation_steps = 1     # 
-batch_size = 48                     # 每个batch
+batch_size = 32                     # 每个batch
 block_size = 2048                   # 平均每条歌词数据大约500字左右。设置2048以保证每条数据在一个batch中
 # model
 n_layer = 12                # 12层
@@ -57,8 +57,8 @@ bias = False                # 不使用偏置
 # adamw optimizer
 learning_rate = 6e-4        # max learning rate
 min_lr = 6e-5               # minimum learning rate, should be ~= learning_rate/10 per Chinchilla
-max_iters = 10000            # 根据数据集大小确定。此时Epoch约为5
-lr_decay_iters = 10000       # should be ~= max_iters per Chinchilla
+max_iters = 15000            # 根据数据集大小确定。此时Epoch约为5
+lr_decay_iters = 15000       # should be ~= max_iters per Chinchilla
 
 decay_lr = True             # whether to decay the learning rate
 warmup_iters = 200          # how many steps to warm up for
