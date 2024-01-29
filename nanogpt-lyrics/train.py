@@ -33,7 +33,7 @@ from model import GPTConfig, GPT
 # default config values designed to train a gpt2 (124M) on OpenWebText
 # I/O
 out_dir = 'out'
-eval_interval = 2000
+eval_interval = 100
 log_interval = 1
 eval_iters = 200
 eval_only = False # if True, script exits right after the first eval
@@ -57,8 +57,8 @@ bias = False                # 不使用偏置
 # adamw optimizer
 learning_rate = 6e-4        # max learning rate
 min_lr = 6e-5               # minimum learning rate, should be ~= learning_rate/10 per Chinchilla
-max_iters = 3500            # 根据数据集大小确定。此时Epoch约为5
-lr_decay_iters = 3500       # should be ~= max_iters per Chinchilla
+max_iters = 2000            # 根据数据集大小确定。此时Epoch约为5
+lr_decay_iters = 2000       # should be ~= max_iters per Chinchilla
 
 decay_lr = True             # whether to decay the learning rate
 warmup_iters = 200          # how many steps to warm up for
